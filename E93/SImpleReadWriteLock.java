@@ -63,7 +63,7 @@ public class SimpleReadWriteLock implements ReadWriteLock {
 
   protected class WriteLock implements Lock {
     public synchronized void lock() {
-      while (readers > 0) {
+      while (readers > 0 || writer) {
         try {
 			    wait();
 		    } catch (InterruptedException e) {
